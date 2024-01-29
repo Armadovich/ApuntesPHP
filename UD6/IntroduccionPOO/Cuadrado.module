@@ -1,0 +1,21 @@
+<?php
+require_once "Figura.php";
+class Cuadrado extends Figura
+{
+private float $lado;
+private Point $bottomLeft;
+
+    public function __construct(int $numeroLados, string $nombre, float $lado, Point $bottomLeft)
+    {
+        parent::__construct($numeroLados, $nombre);
+        $this->lado = $lado;
+        $this->bottomLeft = $bottomLeft;
+    }
+
+    public function CalcularArea(){
+    return $this->lado * $this->lado;
+}
+
+
+
+}
