@@ -9,7 +9,7 @@ class Person
 
     /**
      * @param String $name
-     * @param String $age
+     * @param int $age
      * @param String $occupation
      */
     public function __construct(string $name, int $age, string $occupation)
