@@ -44,7 +44,6 @@ if (isset($_POST['comprar']) && isset($_POST['unidades'])) {
         else{
             $_SESSION['cesta'][$datos->id] += $uds;
         }
-        print_r($_SESSION['cesta']);
         gestionar_cookie_familia($datos->familia);
     }
 }
