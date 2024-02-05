@@ -16,9 +16,30 @@ class Cuadrado extends Figura
 
     }
 
+    public function getLado(): float
+    {
+        return $this->lado;
+    }
+
+    public function setLado(float $lado): void
+    {
+        $this->lado = $lado;
+    }
+
+    public function getBottonLeft(): Point
+    {
+        return $this->bottonLeft;
+    }
+
+    public function setBottonLeft(Point $bottonLeft): void
+    {
+        $this->bottonLeft = $bottonLeft;
+    }
+
 
     public function calcularArea()
     {
+        parent::calcularArea();
         // return $this->lado * $this->lado;
         return pow($this->lado, 2);
     }

@@ -19,6 +19,16 @@ class Point
       
     }
 
+    public static function getNumPuntos(): int
+    {
+        return self::$num_puntos;
+    }
+
+    public static function setNumPuntos(int $num_puntos): void
+    {
+        self::$num_puntos = $num_puntos;
+    }
+
     
 
     /**

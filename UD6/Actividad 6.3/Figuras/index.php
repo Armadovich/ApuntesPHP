@@ -20,3 +20,11 @@ $circulo = new Circulo("Círculo", 3.5, $puntoB);
 $area_circulo = $circulo->calcularArea();
 echo "<p>El área del círculo es $area_circulo</p>";
 
+$arrayFiguras[] = new Cuadrado("Cuadrado", 4, $puntoA, 4);
+$arrayFiguras[] = new Circulo("Círculo", 3.5, $puntoB);
+
+for ($i = 0; $i < count($arrayFiguras); $i++) {
+    $arrayFiguras[$i]->verInformacion();
+    $area = $arrayFiguras[$i]->calcularArea();
+    echo "<p>El área del círculo es $area</p>";
+}
