@@ -12,10 +12,10 @@
 // require_once 'Baile.php';
 require_once 'autoload.php';
 require_once "util.php";
-use clases\people\Profesor;
-use clases\items\Baile;
-use clases\items\Academia;
-use clases\people\Alumno;
+use clases\people\{Profesor,Alumno};
+use clases\items\{Baile,Academia};
+
+
 
 
 $academia = new Academia();

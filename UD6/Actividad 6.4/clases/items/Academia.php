@@ -3,8 +3,7 @@ namespace clases\items;
 
 
 
-use clases\people\Alumno;
-use clases\people\Profesor;
+use clases\people\{Alumno,Profesor};
 
 /**
  * Description of Academia
