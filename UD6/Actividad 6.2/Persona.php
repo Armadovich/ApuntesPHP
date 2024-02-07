@@ -19,4 +19,35 @@ class Persona
     public function verInformacion(){
         echo "$this->nombre $this->apellidos ($this->numTelefono)";
     }
+
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): void
+    {
+        $this->nombre = $nombre;
+    }
+
+    public function getApellidos(): string
+    {
+        return $this->apellidos;
+    }
+
+    public function setApellidos(string $apellidos): void
+    {
+        $this->apellidos = $apellidos;
+    }
+
+    public function getNumTelefono(): string
+    {
+        return $this->numTelefono;
+    }
+
+    public function setNumTelefono(string $numTelefono): void
+    {
+        $this->numTelefono = $numTelefono;
+    }
+
 }
