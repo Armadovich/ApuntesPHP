@@ -49,7 +49,8 @@ class Persoa  implements \JsonSerializable{
        echo $cadea;
    }
 
-   public function jsonSerialize()   {
+   public function jsonSerialize(): array
+   {
 
     $nome_apelidos = join(" ", [$this->nome, $this->apelidos], );
     return ["nome_apelidos" => $nome_apelidos, "mobil" => $this->mobil];
