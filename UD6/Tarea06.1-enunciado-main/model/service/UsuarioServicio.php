@@ -6,9 +6,18 @@ class UsuarioServicio
     const USER_DOES_NOT_EXIST = "No existe usuario";
     const PWD_INCORRECT = "La contraseña no es correcta";
 
+    private IUserRepository $userRepository;
+    private IRolRepository  $rolRepository;
 
-
-
+    /**
+     * @param IUserRepository $userRepository
+     * @param IRolRepository $rolRepository
+     */
+    public function __construct()
+    {
+        $userRepository = new UsuarioRepository();
+        $rolRepository = new RolRepository();
+    }
 
 
     public function getUsuarios(): array
