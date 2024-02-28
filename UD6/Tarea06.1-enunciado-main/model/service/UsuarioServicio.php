@@ -15,20 +15,36 @@ class UsuarioServicio
      */
     public function __construct()
     {
-        $userRepository = new UsuarioRepository();
-        $rolRepository = new RolRepository();
+        $this->userRepository = new UsuarioRepository();
+        $this->rolRepository = new RolRepository();
     }
 
 
     public function getUsuarios(): array
     {
-        //TODO
+        $arrayUsuarios = $this->userRepository->findAll();
+
+        foreach ($arrayUsuarios as $usuario){
+            $usuario->setRoles(
+                $this->rolRepository->findRolesByUserId($usuario->getId())
+            );
+        }
+        return $arrayUsuarios;
 
     }
 
     public function login(string $user, string $pwd, $rolId): ?Usuario
     {
-        //TODO
+        $usuario = $this->userRepository->findUsuarioByEmail($user);
+
+        if (password_verify($pwd,$usuario->getPwdhash())){
+            $usuario->setRoles($this->rolRepository->findRolesByUserId($usuario->getId()));
+
+            if ($this->isUserInRole($usuario, $rolId)){
+                return $usuario;
+            }
+        }
+        return null;
     }
 
     public function getRoles(): array
