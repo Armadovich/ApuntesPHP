@@ -22,8 +22,10 @@
                     <div class="d-flex  justify-content-end  align-items-center">
                         <div class="d-flex mx-2 align-items-center justify-content-end">
                             <p class="lead">¡Hola <?=$_SESSION["email"]?>!</p>
-                        </div>                        
-                         <input type="submit" class="btn btn-primary btn-block" value="Cerrar sesión" name="btnCerrar"></button>                        
+                        </div>
+                        <form method="post" action="FrontController.php?controller=Usuario&action=logout">
+                            <input type="submit" class="btn btn-primary btn-block" value="Cerrar sesión" name="btnCerrar">
+                        </form>
                     </div>
                 <?php } ?>
 		</header>

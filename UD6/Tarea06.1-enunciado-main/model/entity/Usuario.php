@@ -58,6 +58,4 @@ class Usuario  {
         }
         return implode(", ", $roleNamesArray);
     }
-    
- 
 }

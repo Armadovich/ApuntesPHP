@@ -25,12 +25,13 @@ class UsuarioRepository extends BaseRepository implements IUsuarioRepository
 
     public function findUsuarioByEmail($email): Usuario
     {
-        $consulta = "SELECT * FROM $this->table_name WHERE email = $email";
+        $consulta = "SELECT * FROM $this->table_name WHERE email = :email";
 
         $pdostmt = $this->conn->prepare($consulta);
+        $pdostmt->bindParam("email", $email);
         $pdostmt->execute();
 
-        $usuario = $pdostmt->fetch(PDO::FETCH_OBJ);
+        $usuario = $pdostmt->fetchObject($this->class_name);
 
         return $usuario;
     }
