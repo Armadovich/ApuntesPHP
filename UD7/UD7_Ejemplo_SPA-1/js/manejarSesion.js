@@ -1,5 +1,4 @@
 
-let userId = null;
 
 function login(event) {
     //evitamos que se envíe el formulario de forma predefinida (la acción por defecto sería enviar los datos al servidor)
@@ -40,10 +39,7 @@ function login(event) {
             .then((response) => {
                 console.log(response);
                 if (response.userId && response.email) {
-
                     toggleLoginMain(response.email);
-                    userId = response.userId;
-                    console.log(userId);
                
                 } else {
                     console.error('La autenticación ha fallado');
