@@ -22,7 +22,7 @@
                     <p class="lead">¡Hola <span class='d-none' id='email_header'></span>!</p>
                 </div>
 
-                <form method="post" class="d-flex mx-2 align-items-center justify-content-start">
+                <form id="cerrarSesion" method="post" class="d-flex mx-2 align-items-center justify-content-start">
                     <input type="submit" class="btn btn-primary btn-block" value="Cerrar sesión" name="btnCerrar" id="btnCerrar"></button>
                 </form>
             </div>
