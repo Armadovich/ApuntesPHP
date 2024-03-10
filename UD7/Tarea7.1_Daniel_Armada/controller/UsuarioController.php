@@ -50,6 +50,7 @@ class UsuarioController
 
                 SessionManager::iniciarSesion();
                 $_SESSION["userId"] = $userResult->getId();
+
                 $_SESSION["email"] = $userResult->getEmail();
                 $_SESSION["roleId"] = $rolId;
                 $_SESSION["ultimoAcceso"] = time();
@@ -95,20 +96,27 @@ class UsuarioController
     {
         //Para simplificar la implementación del ejemplo de SPA vamos a obviar la redirección en caso de que ya haya iniciado sesión
 
-
+        print_r($_SESSION["userId"]);
         $this->page_title = 'Inicio de sesión';
         $this->view = self::VIEW_FOLDER . DIRECTORY_SEPARATOR . 'logout';
 
         $userResult = json_decode(file_get_contents("php://input"), true);
 
         if ($userResult != null) {
-            $userId = $userResult["userId"];
 
-            SessionManager::cerrarSesion();
-            $response["userId"] =$userId;
-            return json_encode($response);
-
+            if ( $_SESSION["userId"] == $userResult["userId"]){
+                http_response_code(200);
+                $response["error"] = false;
+                SessionManager::cerrarSesion();
+                return json_encode($response);
+            }else {
+                http_response_code(400);
+                $response["error"] = "Authenticated user does not match logging out user. Logging out anyway";
+                SessionManager::cerrarSesion();
+                return json_encode($response);
+            }
         } else {
+            SessionManager::cerrarSesion();
             //400 Bad Request
             http_response_code(400);
             $response["error"] = true;

@@ -26,6 +26,7 @@ function login(event) {
     fetch(request)
             .then((response) => {
                 if (response.status === 200) {
+                    console.log("200");
                     return response.json();
                     //bad request
                 } else if ((response.status === 400) || (response.status===401)) {
@@ -60,30 +61,20 @@ function login(event) {
 
 
 function logoutCliente() {
-    //evitamos que se envíe el formulario de forma predefinida (la acción por defecto sería enviar los datos al servidor)
-
-
-    if (userId != null || userId !== undefined){
-
-    }
 
 
     let logout_url = "?controller=Usuario&action=logout";
 
-    //preparamos los datos que se enviarían al servidor como si se enviasen  por POST  desde el formulario
-    const data = new FormData();
-    data.append('email', email);
-    data.append('pwd', pwd);
-    data.append('rol', rol);
+    if (userId != null || userId !== undefined){
 
-    const request = new Request(base_url + logout_url, {
-        method: "POST",
-        body: JSON.stringify({
-            userId : userId
-        })
-    });
+        const request = new Request(base_url + logout_url, {
+            method: "POST",
+            body: JSON.stringify({
+                userId : userId
+            })
+        });
 
-    fetch(request)
+        fetch(request)
         .then((response) => {
             if (response.status === 200) {
                 return response.json();
@@ -92,37 +83,28 @@ function logoutCliente() {
                 console.log('error 400');
                 return false;
             } else {
-                console.log("Something went wrong on API server!");
+                console.log("Something went wrong");
                 return false;
             }
 
         })
         .then((response) => {
                 console.log(response);
-                if (response.userId && response.email) {
-
-                    toggleLoginMain(response.email);
-                    userId = response.userId;
-                    console.log(userId);
-
-                } else {
-                    console.error('El cierre de sesion ha fallado');
-                }
+                toggleLoginMain('');
+                userId = null;
+                if (response.error !== false) showErrorLogin("Error al cerrar sesión",true,"errorLogin")
             }
         )
         .catch((error) => {
             console.error('Ha ocurrido un error en logout' + error);
         });
-
+    }
 
 }
 
 function confirmLogoutClient(event) {
-    //evitamos que se envíe el formulario de forma predefinida (la acción por defecto sería enviar los datos al servidor)
     event.preventDefault();
-    showModal("spa_modal", "Confirmación logout", "¿Confirma que quiere cerrar sesión?", null, null, function () {
-        logoutCliente();
-    }, null);
+    showModal("spa_modal", "Confirmación logout", "¿Confirma que quiere cerrar sesión?", null, null, logoutCliente, null);
 
 }
 
