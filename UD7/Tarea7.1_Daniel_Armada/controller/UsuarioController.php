@@ -94,12 +94,6 @@ class UsuarioController
 
     public function logout()
     {
-        //Para simplificar la implementación del ejemplo de SPA vamos a obviar la redirección en caso de que ya haya iniciado sesión
-
-        print_r($_SESSION["userId"]);
-        $this->page_title = 'Inicio de sesión';
-        $this->view = self::VIEW_FOLDER . DIRECTORY_SEPARATOR . 'logout';
-
         $userResult = json_decode(file_get_contents("php://input"), true);
 
         if ($userResult != null) {

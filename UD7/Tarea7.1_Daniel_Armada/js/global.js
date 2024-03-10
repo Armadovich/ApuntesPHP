@@ -1,5 +1,5 @@
 
-const base_url = "http://localhost:63342/ApuntesPHP/UD7/UD7_Ejemplo_SPA-main/controller/FrontController.php";
+const base_url = "http://localhost:63342/ApuntesPHP/UD7/Tarea7.1_Daniel_Armada/controller/FrontController.php";
 
 window.onload = onceLoaded;
 
